@@ -1,33 +1,50 @@
+"use client";
 import React from "react";
-import {FaReact} from 'react-icons/fa'
-import {FaSass} from 'react-icons/fa'
-import {TbBrandNextjs} from 'react-icons/tb'
-import {BiLogoTailwindCss} from 'react-icons/bi'
-import {BiLogoTypescript} from 'react-icons/bi'
-import {BiLogoGraphql} from 'react-icons/bi'
+import { Howl } from "howler";
+
+var soundEffect = new Howl({
+  src: ["click_sound.wav"],
+});
 
 type Card = {
-  title: string; 
-  text: string; 
+  title: string;
+  text: string;
   link: string;
-}
+  image: string;
+};
 
-const Card = ({title, text, link}: Card) => {
+const Card = ({
+  title,
+  text,
+  link,
+  image,
+}: {
+  title: string;
+  text: string;
+  link: string;
+  image: string;
+}) => {
+  React.useEffect(() => {}, []);
+
+  const handleClick = () => {
+    soundEffect.play();
+  };
 
   return (
     <>
-      <div className="grid text-center">
-        <a
-          href={link}
-          className=" rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-1xl font-semibold`}>{title}</h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            {text}
-          </p>
-        </a>
-      </div>
+      <a href={link} onClick={handleClick} target="_blank">
+        <div className="card_container bg-white w-[360px] h-[120px] border border-slate-200 rounded-lg i group relative flex select-none flex-col justify-center space-x-4 overflow-hidden border-border p-6 transition-all hover:scale-[1.025] hover:bg-slate-50 hover:bg-primary/5 hover:border-primary-500/20 hover:shadow-lg hover:shadow-primary-500/5">
+          <article className="card_content">
+            <div className="flex space-x-1">
+              <img src={image} className="w-5 h-5" />
+              <h3 className="relative top-[-3px]">{title}</h3>
+            </div>
+            <div>
+              <p className="text-sm">{text}</p>
+            </div>
+          </article>
+        </div>
+      </a>
     </>
   );
 };

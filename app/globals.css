@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;500;700;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+:root {
+  --select-color: lightblue;
+}
+
+body {
+  background-image: url("../images/background.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@layer base {
+}
+
+::-moz-selection {
+  background-color: var(--select-color);
+  color: #fff;
+}
+
+::selection {
+  background-color: var(--select-color);
+  color: #fff;
+}
+
+@media screen and (max-width: 720px) {
+  .title {
+    font-size: 30px;
+    width: 80%;
+    margin: 0;
+    padding: 0;
+    left: 70px;
+    position: absolute;
+    text-align: center;
+  }
+}
